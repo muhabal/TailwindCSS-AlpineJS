@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="https://img.icons8.com/laces/64/ffffff/fire-heart.png">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.0/dist/cdn.min.js"></script>
+  <title>Awesome</title>
+  <style type="text/tailwindcss">
+    [x-cloak] {
+      display: none !important;
+    }
+    
+    :root{
+      --primary: rgb(88,40,244);
+      --primary-hover: rgb(69, 29, 200);
+      --font1: "Lobster", sans-serif
+    }
+    /* html{
+      font-size: 14px;
+    } */
+
+    .font1{
+      font-family: var(--font1);
+    }
+    h1{
+      font-size: 4rem;
+      line-height: 1.2;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      font-family: 'Lobster';
+    }
+
+    h2{
+      font-size: 1.5rem;
+      font-weight: bold;
+      line-height: 2rem;
+      margin-bottom: .75rem;
+    }
+
+    .button{
+      display: inline-flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      text-align: center;
+      border-radius: .5rem;
+      cursor: pointer;
+      padding: 0 1rem;
+      min-height: 3.3rem;
+      font-weight: 600;
+      box-shadow: 0 4px 3px rgba(0, 0, 0, .1);
+      transition-property: transform;
+      transition-duration: .2s;
+      color: white;
+      background-color: var(--primary);
+    }
+
+    .button:hover{
+      background-color: var(--primary-hover);
+    }
+    .button:active{
+      transform: scale(.95);
+    }
+    .navitems>li>a {
+      @apply h-12 px-4 hover:bg-gray-700 rounded-lg flex items-center 
+    }
+
+    .card{
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+      border-radius: 1rem;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, .1);
+      margin-bottom: 2rem;
+      background-color: white;
+      padding-bottom: 1rem;
+    }
+    .hoverlist>* {
+      @apply hover:bg-gray-200 rounded-md duration-150;
+    }
+
+    .hoverlist>*>a {
+      @apply flex items-center p-2 block;
+    }
+
+    .highlight{
+      @apply !bg-indigo-100
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+  <header class="flex items-center justify-between px-8 bg-gray-800 h-20 text-white sticky top-0 z-50">
+    <logo>
+      <a class="flex items-center gap-1" href="">
+        <img class="h-8 -mt-1" src="https://img.icons8.com/laces/64/ffffff/fire-heart.png" alt="fire-heart"/>
+        <span>Awesome</span>
+      </a></logo>
+    <nav>
+      <ul class="flex items-center navitems">
+        <li><a class="" href="">Home</a></li>
+        <li><a href="">Create Post</a></li>
+        <li x-data="{ dropdownOpen: false}" class="relative">
+          <a @click="dropdownOpen = !dropdownOpen" @click.away="dropdownOpen = false" class="gap-1 cursor-pointer select-none">
+            <img class="h-8 rounded-full object-cover bg-teal-200" src="https://img.icons8.com/doodle/96/bart-simpson.png" alt="bart-simpson"/>
+            Bart
+            <img class="w-4" src="https://img.icons8.com/small/16/777777/expand-arrow.png" alt="expand-arrow"/>
+          </a>
+          <div x-show="dropdownOpen" x-cloak class="absolute right-0 bg-white text-black shadow rounded-lg w-40 p-2 z-20"
+          x-transition:enter="duration-300 ease-out"
+          x-transition:enter-start="opacity-0 -translate-y-5 scale-90"
+          x-transition:enter-end="opacity-100 translate-y-0 scale-100"
+          >
+            <ul class="hoverlist [&>li>a]:justify-end">
+              <li><a href="">My Profile</a></li>
+              <li><a href="">Log Out</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <hero class="grid bg-gray-700 text-white text-center bg-cover bg-[url('https:live.staticflickr.com/65535/49909538937_3255dcf9e7_b.jpg')]">
+    <div class="col-start-1 row-start-1 bg-gray-800 opacity-40 w-full h-full"></div>
+    <div class="col-start-1 row-start-1 py-24 px-10 z-2">
+      <h1>Awesome Photos & Captions</h1>
+      <p class="text-lg font-bold mb-5">Share your favorite Photos from Flickr and add a great caption</p>
+      <a class="button" href="">Get Started</a>      
+    </div>
+  </hero>
+
+  <content class="grid grid-cols-3 max-w-7xl mx-auto mt-6">
+    <main class="col-span-2 mx-[10%]">
+      <article class="card">
+        <div class="flex items-center justify-between px-4 h-14">
+          <h3 class="text-lg font-bold w-[50%] truncate">Little Jedi</h3>
+          <div>flickr @ <a class="hover:underline" href="" target="_blank">John Doe</a></div>
+        </div>
+        <figure>
+          <a href=""><img class="w-full " src="https://live.staticflickr.com/65535/50618365686_36f887ab88_c.jpg" alt=""></a>
+        </figure>
+        <div class="p-4 pb-2">
+          <a class="flex items-center gap-1 mb-4" href="">
+            <img class="w-8 h-8 rounded-full" src="https://img.icons8.com/small/96/A9A9A9/happy.png" alt="">
+            <span class="font-bold hover:underline">Lisa</span>
+          </a>
+          <p class="font1 text-5xl mb-10 px-4">Jedi Kitty protects the street</p>
+          <div class="flex gap-2 items-center text-sm mb-5 ">
+            <a class="bg-gray-200 rounded-full px-3 py-1 hover:bg-gray-500 hover:text-white" href="">Animals</a>
+            <a class="bg-gray-200 rounded-full px-3 py-1 hover:bg-gray-500 hover:text-white" href="">Cute</a>
+          </div>    
+          <div class="flex items-center justify-between text-sm px-2">
+            <a href="">Comments <span>3</span></a>
+            <div class="flex items-center gap-4 [&>a:hover]:underline">
+              <div class="flex items-center gap-1">
+                <img class="w-5 -mt-1" src="https://img.icons8.com/laces/64/000000/fire-heart.png" alt="">1</div>
+              <a href="">Like</a>
+              <a href="">Edit</a>
+              <a href="">Delete</a>
+            </div>
+          </div>             
+        </div>
+
+      </article>
+    </main>
+    <aside class="col-span-1 mr-[20%]">
+      <section class="card p-4">
+        <h2>Categories</h2>
+        <ul class="hoverlist [&>li:hover]:transition">
+          <li class="highlight"><a href="">
+            <img class="w-8 h-8 object-cover mr-2" src="https://img.icons8.com/small/96/null/landscape.png" alt="">
+            <span class="font-bold text-sm">Landscape</span>
+          </a></li>
+          <li><a href="">
+            <img class="w-8 h-8 object-cover mr-2" src="https://img.icons8.com/small/96/null/portrait.png" alt="">
+            <span class="font-bold text-sm">People</span>
+          </a></li>
+          <li><a href="">
+            <img class="w-8 h-8 object-cover mr-2" src="https://img.icons8.com/small/96/null/dog.png" alt="">
+            <span class="font-bold text-sm">Animals</span>
+          </a></li>
+          <li><a href="">
+            <img class="w-8 h-8 object-cover mr-2" src="https://img.icons8.com/small/96/null/collage.png" alt="">
+            <span class="font-bold text-sm">Abstract</span>
+          </a></li>
+          <li><a href="">
+            <img class="w-8 h-8 object-cover mr-2" src="https://img.icons8.com/small/96/null/180-degrees.png" alt="">
+            <span class="font-bold text-sm">Black & White</span>
+          </a></li>
+        </ul>        
+      </section>
+      <section class="card p-4">
+        <h2 class="">Top Photos</h2>
+        <ul class="hoverlist">
+          <li><a href="">
+            <img class="w-10 h-10 rounded-lg object-cover mr-3" src="https://live.staticflickr.com/65535/50618365686_36f887ab88_c.jpg" alt="">
+            <img class="w-6 h-6 rounded-full object-cover mr-0.5" src="https://img.icons8.com/small/96/A9A9A9/happy.png" alt="">
+            <span class="font-bold text-sm mr-1">Homer</span>
+            <span class="text-sm font-light text-grey-500">(5 Likes)</span>
+          </a></li>
+          <li><a href="">
+            <img class="w-10 h-10 rounded-lg object-cover mr-3" src="https://live.staticflickr.com/65535/50618365686_36f887ab88_c.jpg" alt="">
+            <img class="w-6 h-6 rounded-full object-cover mr-0.5" src="https://img.icons8.com/small/96/A9A9A9/happy.png" alt="">
+            <span class="font-bold text-sm mr-1">Homer</span>
+            <span class="text-sm font-light text-grey-500">(5 Likes)</span>
+          </a></li>
+        </ul>
+      </section>
+      <section class="card p-4">
+        <h2 class="">Top Captions</h2>
+        <ul class="hoverlist">
+          <li><a href="">
+            <img class="w-6 h-6 rounded-full object-cover mr-0.5" src="https://img.icons8.com/small/96/A9A9A9/happy.png" alt="">
+            <span class="font-bold text-sm mr-1">Homer</span>
+            <span class="text-sm font-light text-grey-500">(5 Likes)</span>
+          </a></li>
+        </ul>
+      </section>
+    </aside>
+  </content>
+</body>
+</html>
